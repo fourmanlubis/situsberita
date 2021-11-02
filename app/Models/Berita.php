@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class kategoriseeder extends Model
+class Berita extends Model
 {
     use HasFactory;
     
-\App\Model\komentar 
+    protected $table = "tblberita";
 }

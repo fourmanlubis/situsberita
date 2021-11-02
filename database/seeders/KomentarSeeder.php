@@ -13,6 +13,7 @@ class KomentarSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Komentar::truncate();
+        \App\Models\Komentar::factory()->count(1000)->create();
     }
 }

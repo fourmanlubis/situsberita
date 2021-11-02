@@ -14,8 +14,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view("beranda.home",[
+            "Kategori" => \App\Models\Kategori::all(),
+            "Berita" =>\App\Models\Berita::latest()->paginate(10)
+        ]);
 });
+
+Route::get('/kategori/{kategori_id}',function($kategori_id){
+    return view('beranda.home',[
+    "kategori" =>\App\Models\Kategori::all(),
+    "berita" =>\App\Models\Berita::where("kategori_id",$kategori_id)
+                    ->latest()
+                    ->paginate(10)
+    ]);
+    
+})->name("Kategori");
+
+Route::get('/detail/{berita_id}',function($berita_id){
+        return view('beranda.detail',[
+            "beranda" => \App\Models\Berita::find($berita_id)
+        ]);
+    
+})->name("detail.beranda");
 
 Auth::routes();
 

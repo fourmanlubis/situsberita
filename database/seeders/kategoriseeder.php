@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Kategori;
 
-class kategoriseeder extends Seeder
+class Kategoriseeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,18 +14,14 @@ class kategoriseeder extends Seeder
      */
     public function run()
     {
-        //
-        \schema::disableForeignKeyConstraints();
-        \DB::table("tblkategori")->truncate();
-        \App\Models\kategori::insert([
-             ["nama_kategori" => "umum"],
-             ["nama_kategori" => "tren"],
-             ["nama_kategori" => "health"],
-             ["nama_kategori" => "food"],
-             ["nama_kategori" => "edukasi"],
-            
-            
+        
+        Kategori::truncate();
+        Kategori::insert([
+            ["nama_kategori" => "News"],    
+            ["nama_kategori" => "Tren"],    
+            ["nama_kategori" => "Health"],    
+            ["nama_kategori" => "Food"],    
+            ["nama_kategori" => "Edukasi"],    
         ]);
-         \schema::disableForeignKeyConstraints();
     }
 }

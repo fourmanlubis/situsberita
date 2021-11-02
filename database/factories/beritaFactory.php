@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class KomentarFactory extends Factory
+class beritaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,9 +14,10 @@ class KomentarFactory extends Factory
     public function definition()
     {
         return [
-            "isi_komentar" => $this->faker->sentence(5),
-            "berita_id" => \App\Models\Berita::get("id")->random(),
-            "user_id" =>  \App\Models\User::get("id")->first()
+            "judul" => $this->faker->sentence(5),
+            "isi" => $this->faker->text(500),
+            "kategori_id" => \App\Models\Kategori::get("id")->random()
         ];
     }
 }
+
