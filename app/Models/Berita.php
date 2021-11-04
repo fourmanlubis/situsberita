@@ -10,4 +10,15 @@ class Berita extends Model
     use HasFactory;
     
     protected $table = "tblberita";
+    protected $fillable =["kategori_id","judul","isi"];
+    /**
+     * Get the user that owns the Berita
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'kategori_id', 'id');
+    }
+
 }
