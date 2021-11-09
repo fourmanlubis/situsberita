@@ -50,7 +50,6 @@ route::middleware(['auth'])->group(function (){
     route::post("/admin.berita",[beritacontroller::class,'store'])->name("admin.berita.store");
     
     route::get("admin/berita/rubah/{berita}",[beritacontroller::class,"edit"])->name("admin.berita.edit");
-    
     route::get("admin/berita/update",[beritacontroller@store::class,"update"])->name("admin.berita.update");    
     
     route::get("admin/berita/destory/{berita}",[beritacontroller::class,'destory'])

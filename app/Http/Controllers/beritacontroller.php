@@ -22,9 +22,16 @@ class beritacontroller extends Controller
     }
     
     public function store(Request $request){
-        \App\Models\Berita::create([
-         "kategori_id" =>$request->kategori_id,
+        $request->validate{[
+            "kategori" => "required",
+             "judul" => "required|min:50|max:255",
+              "isi" => "required|min:100"
+            ]);
+            
+        Berita::create([
+         "kategori_id" =>$request->kategori,
          "judul" =>$request->judul
+         "gambar" =>$request->file("gambar")->store("berita"),
          "isi" => $request-> isi
         ]);
         
@@ -52,5 +59,16 @@ class beritacontroller extends Controller
         return redirect()->route("admin.berita.index")
         ->with("info","berhasil hapus berita");
         
+    }
+    
+    public function simpankomentar(Request $request){
+      
+        \App\Models\komentar::create([
+            "isi_komentar" => $request->komentar,
+            "berita_id" => $request->berita_id,
+            "user_id" => $request->user->id
+            ]);
+            
+            return redirect()->route('detail.berita',["berita_id" => $request->berita_id]);
     }
 }

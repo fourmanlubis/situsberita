@@ -16,6 +16,7 @@ class CreateTblberitaTable extends Migration
         Schema::create('tblberita', function (Blueprint $table) {
             $table->id();
             $table->string("judul");
+            $table->string("gambar")->inullable();
             $table->text("isi");
             $table->unsignedBigInteger("kategori_id");
             $table->foreign("kategori_id")->references("id")->on("tblkategori");
